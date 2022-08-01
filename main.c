@@ -1,7 +1,7 @@
-
 #include "push_swap.h"
 
-/*typedef struct s_stack
+/*
+typedef struct s_stack
 {
 	int				nbr;
 	int				index;
@@ -13,35 +13,38 @@
 }	t_stack;
 */
 
-void	quit(char *error, t_stack **stack)
+void print_stack(t_stack *a, t_stack *b)
 {
-	if (stack)
-		del_stack(stack);
-	if (error)
+	printf("\na:\n");
+	while (a)
 	{
-		ft_fprintf(STDERR_FILENO, "ERROR\n%s\n", error);
-		exit(EXIT_FAILURE);
+		printf("%d %d\n", a->nbr, a->index);
+		a = a->next;
 	}
-	exit(EXIT_SUCCESS);
+	printf("b:\n");
+	while (b)
+	{
+		printf("%d %d\n", b->nbr, b->index);
+		b = b->next;
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	*a;
-	// t_stack	*b;
+	t_stack	*tmp;
+	t_stack	*b;
 
 	if (ac < 2)
 		return (0);
 	if (!is_nbr_valid(av))
 		quit("All arguments needs to be an unique number", NULL);
-	// b = NULL;
+	b = NULL;
 	a = fill_stack_a(ac, av);
-	while (a)
-	{
-		printf("%d\n", a->nbr);
-		a = a->next;
-	}
-	// if (ac == 3)
-	// else if (ac > 3)
+	tmp = a;
+	print_stack(a, b);
+	a = tmp;
+	sort_stack(&a, &b, ac);
+	print_stack(a, b);
 	return (0);
 }

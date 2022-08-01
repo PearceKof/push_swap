@@ -1,42 +1,68 @@
 #include "push_swap.h"
 
-int	is_double(char *nbr, char **nbrlist)
+void	quit(char *error, t_stack **stack)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (nbrlist[j])
+	if (stack)
+		del_stack(stack);
+	if (error)
 	{
-		while (nbrlist[j][i] && nbr[i] && nbrlist[j][i] == nbr[i])
-			i++;
-		if (nbrlist[j][i] == '\0' && nbr[i] == '\0')
+		ft_fprintf(STDERR_FILENO, "ERROR\n%s\n", error);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
+}
+
+long int	ft_atol(const char *str)
+{
+	char		neg;
+	int			i;
+	long int	value;
+
+	neg = 1;
+	i = 0;
+	value = 0;
+	if (str[i] == '-')
+	{
+		neg *= -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9' 
+			&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
+		value = (value * 10) + str[i++] - '0';
+	return (value * neg);
+}
+
+int	is_double(long nb, char **nblist)
+{
+	long	nbbis;
+	size_t	i;
+
+	i = 1;
+	while (nblist[i])
+	{
+		nbbis = ft_atol(nblist[i++]);
+		if (nb == nbbis)
 			return (1);
-		i = 0;
-		j++;
 	}
 	return (0);
 }
 
 int	is_nbr_valid(char **nbr)
 {
+	long	nb;
 	size_t	i;
-	size_t	j;
 
-	i = 0;
-	j = 1;
-	while (nbr[j])
+	i = 1;
+	while (nbr[i])
 	{
-		if (is_double(nbr[j], nbr + (j + 1)))
-			return (0);
-		while (nbr[j][i])
-		{
-			if (!ft_isdigit(nbr[j][i++]))
-				return (0);
-		}
-		i = 0;
-		j++;
+		nb = ft_atol(nbr[i]);
+		if (nb < INT_MIN || nb > INT_MAX)
+			quit("All numbers must be in the maxmin int limit", NULL);
+		if (is_double(nb, &nbr[i]))
+			quit("All numbers must be unique", NULL);
+		i++;
 	}
 	return (1);
 }

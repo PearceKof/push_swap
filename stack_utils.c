@@ -1,26 +1,5 @@
 #include "push_swap.h"
 
-t_stack	*fill_stack_a(int ac, char  **av)
-{
-	t_stack	*a;
-	int		i;
-	long	nbr;
-
-	i = 1;
-	nbr = 0;
-	a = NULL;
-	while (i < ac)
-	{
-		nbr = ft_atoi(av[i]);
-		if (i == 1)
-			a = new_stack(nbr);
-		else
-			add_stack(&a, new_stack(nbr));
-		i++;
-	}
-	return (a);
-}
-
 t_stack *new_stack(int nbr)
 {
 	t_stack	*new;
@@ -46,6 +25,14 @@ void	add_stack(t_stack **stack, t_stack *new)
 		return ;
 	last = get_last_stack(*stack);
 	last->next = new;
+}
+
+int	stack_size(t_stack *stack)
+{
+	if (stack)
+		return (1 + stack_size(stack->next));
+	else
+		return (0);
 }
 
 t_stack	*get_last_stack(t_stack *stack)
