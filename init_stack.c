@@ -30,16 +30,33 @@ void	fill_index(t_stack *a, int size)
 
 t_stack	*fill_stack_a(int ac, char  **av)
 {
+	char	**nbrlist;
 	t_stack	*a;
-	int	nb;
+	int		nb;
 	int		i;
 
-	i = 1;
 	nb = 0;
 	a = NULL;
+	i = 0;
+	if (ft_strchr(*av, ' '))
+		nbrlist = ft_split(*av, ' ');
+	else
+	{
+		nbrlist = malloc(ac * sizeof(char *));
+		if (!nbrlist)
+			return (NULL);
+		i = 0;
+		while (av[i])
+		{
+			nbrlist[i] = ft_strdup(av[i]);
+			i++;
+		}
+		nbrlist[i] = NULL;
+	}
+	i = 1;
 	while (i < ac)
 	{
-		nb = ft_atoi(av[i]);
+		nb = ft_atoi(nbrlist[i]);
 		if (i == 1)
 			a = new_stack(nb);
 		else
@@ -52,14 +69,12 @@ t_stack	*fill_stack_a(int ac, char  **av)
 
 void	init_target_pos(t_stack *ptra, t_stack *ptrb)
 {
-	int	dif;
-
 	while (ptra)
 	{
-		if (ptra->index < ptrb->index && ptra->next->index)
+		if (ptra->index > ptrb->index)
 			ptrb->target_pos = ptra->pos;
-		else if (ptra->index == (ptrb->index + 1))
-			ptrb->target_pos = ptra->pos + 1;
+		// else if (ptra->index < ptrb->index)
+		// 	ptrb->target_pos = ptra->pos;
 		ptra = ptra->next;
 	}
 }
