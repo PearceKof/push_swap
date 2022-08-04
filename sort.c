@@ -1,24 +1,22 @@
 #include "push_swap.h"
 
-void	super_sort_ultimax(t_stack **a, t_stack **b, int index_max)
+void	put_in_stack_b(t_stack **a, t_stack **b)
 {
-	printf("MAX INED= %d\n", index_max);
-	while (stack_size(*a) > (index_max / 2) && stack_size(*a) > 3)
+	int	size;
+	int	med;
+
+	size = stack_size(*a);
+	med = size / 2;
+	while (size > med && size > 3)
 	{
-		if ((*a)->index <= (index_max / 2))
+		if ((*a)->index <= med)
 			pb(a, b);
-		else
+		if ((*a)->index > med)
 			ra(a);
-		printf("\nFIRST\n");
-		print_stack(*a, *b);
+		size = stack_size(*a);
 	}
 	while (stack_size(*a) > 3)
-	{
 		pb(a, b);
-		printf("\nSECOND\n");
-		print_stack(*a, *b);
-	}
-	sort_three(a);
 }
 
 void	sort_stack(t_stack **a, t_stack **b, int ac)
@@ -29,7 +27,14 @@ void	sort_stack(t_stack **a, t_stack **b, int ac)
 	else if (ac == 4)
 		sort_three(a);
 	else if (ac > 4)
-		super_sort_ultimax(a, b, ac);
+	{
+		put_in_stack_b(a, b);
+		sort_three(a);
+		// while (!is_sorted(*a, ac))
+		// {
+		// }
+			init_pos_and_cost(a, b);
+	}
 }
 
 void	sort_three(t_stack **a)

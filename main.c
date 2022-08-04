@@ -18,13 +18,13 @@ void print_stack(t_stack *a, t_stack *b)
 	printf("\na:\n");
 	while (a)
 	{
-		printf("%d %d\n", a->nbr, a->index);
+		printf("nbr: %d index: %d pos : %d\n", a->nbr, a->index, a->pos);
 		a = a->next;
 	}
 	printf("b:\n");
 	while (b)
 	{
-		printf("%d %d\n", b->nbr, b->index);
+		printf("nbr: %d index: %d pos : %d targ_pos : %d\n", b->nbr, b->index, b->pos, b->target_pos);
 		b = b->next;
 	}
 }

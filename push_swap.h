@@ -24,6 +24,8 @@ init_stack.c
 */
 void	fill_index(t_stack *a, int size);
 t_stack	*fill_stack_a(int ac, char  **av);
+void	init_target_pos(t_stack *ptra, t_stack *ptrb);
+void	init_pos_and_cost(t_stack **a, t_stack **b);
 /*
 sort.c
 */
@@ -58,6 +60,8 @@ void	rrr(t_stack **a, t_stack **b);
 utils.c
 */
 int		is_nbr_valid(char **nbr);
+long int	ft_atol(const char *str);
 void	quit(char *error, t_stack **stack);
 void print_stack(t_stack *a, t_stack *b);
+int	is_sorted(t_stack *stack, int ac);
 #endif
