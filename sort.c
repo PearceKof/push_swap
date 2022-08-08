@@ -1,19 +1,21 @@
 #include "push_swap.h"
 
-void	put_in_stack_b(t_stack **a, t_stack **b)
+void	pb_all_but_three(t_stack **a, t_stack **b)
 {
-	int	size;
-	int	med;
+	int	a_size;
+	int	b_size;
 
-	size = stack_size(*a);
-	med = size / 2;
-	while (size > med && size > 3)
+	a_size = stack_size(*a);
+	b_size = 0;
+	while (a_size > 6 && b_size < a_size / 2)
 	{
-		if ((*a)->index <= med)
+		if ((*a)->index <= a_size / 2)
+		{
 			pb(a, b);
-		if ((*a)->index > med)
+			b_size++;
+		}
+		else
 			ra(a);
-		size = stack_size(*a);
 	}
 	while (stack_size(*a) > 3)
 		pb(a, b);
@@ -21,30 +23,47 @@ void	put_in_stack_b(t_stack **a, t_stack **b)
 
 void	sort_stack(t_stack **a, t_stack **b, int ac)
 {
-	(void)b;
 	if (ac == 3 && (*a)->index == 2)
 		sa(a);
 	else if (ac == 4)
 		sort_three(a);
 	else if (ac > 4)
 	{
-		put_in_stack_b(a, b);
+		pb_all_but_three(a, b);
 		sort_three(a);
-		// while (!is_sorted(*a, ac))
-		// {
-		// }
-			init_pos_and_cost(a, b);
+		while (*b)
+		{
+			find_target_and_position(a, b);
+			get_cost(a, b);
+		}
 	}
+}
+
+static int	get_biggest_index(t_stack *stack)
+{
+	int	biggest;
+
+	biggest = stack->index;
+	while (stack)
+	{
+		if (stack->index > biggest)
+			biggest = stack->index;
+		stack = stack->next;
+	}
+	return (biggest);
 }
 
 void	sort_three(t_stack **a)
 {
-	if ((*a)->index == 1 && (*a)->next->index == 2)
+	int	biggest;
+
+	if (is_sorted(*a))
 		return ;
-	if ((*a)->index < (*a)->next->index && (*a)->next->index > (*a)->next->next->index)
-		rra(a);//1 < 3 > 2 || 2 < 3 > 1
-	if ((*a)->index > (*a)->next->index && (*a)->index > (*a)->next->next->index)
-		ra(a);// 3 > 1 < 2 || 3 > 2 > 1
+	biggest = get_biggest_index(*a);
+	if ((*a)->next->index == biggest)
+		rra(a);
+	else if ((*a)->index == biggest)
+		ra(a);
 	if ((*a)->index > (*a)->next->index)
-		sa(a);// 2 1 3
+		sa(a);
 }

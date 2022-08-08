@@ -4,6 +4,7 @@ FLAGS		= -Wall -Wextra -Werror
 
 FILES		= main.c \
 				init_stack.c \
+				position.c \
 				stack_utils.c \
 				utils.c \
 				sort.c \

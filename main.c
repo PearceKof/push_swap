@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 	tmp = a;
 	print_stack(a, b);
 	a = tmp;
-	// sort_stack(&a, &b, ac);
+	sort_stack(&a, &b, ac);
 	print_stack(a, b);
 	return (0);
 }

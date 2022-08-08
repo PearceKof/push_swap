@@ -67,13 +67,13 @@ int	is_nbr_valid(char **nbr)
 	return (1);
 }
 
-int	is_sorted(t_stack *stack, int ac)
+int	is_sorted(t_stack *stack)
 {
-	while (stack && --ac)
+	while (stack->next)
 	{
-		if (stack->next == NULL && !ac)
-			return (1);
+		if (stack->nbr > stack->next->nbr)
+			return (0);
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
