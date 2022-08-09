@@ -18,7 +18,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
-
+/*
+move.c
+*/
+void	move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 /*
 init_stack.c
 */
@@ -30,6 +33,9 @@ sort.c
 */
 void	pb_all_but_three(t_stack **a, t_stack **b);
 void	sort_stack(t_stack **a, t_stack **b, int ac);
+void	get_cost(t_stack **a, t_stack **b);
+void	move_cheapest(t_stack **a, t_stack **b);
+int		get_abs(int nb);
 void	sort_three(t_stack **a);
 /*
 stack_utils.c

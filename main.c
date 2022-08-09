@@ -15,16 +15,16 @@ typedef struct s_stack
 
 void print_stack(t_stack *a, t_stack *b)
 {
-	printf("\na:\n");
+	printf("a:\n");
 	while (a)
 	{
-		printf("nbr: %d index: %d pos : %d\n", a->nbr, a->index, a->pos);
+		printf("nbr: %d index: %d target : %d\n", a->nbr, a->index, a->target_pos);
 		a = a->next;
 	}
 	printf("b:\n");
 	while (b)
 	{
-		printf("nbr: %d index: %d pos : %d targ_pos : %d\n", b->nbr, b->index, b->pos, b->target_pos);
+		printf("nbr: %d index: %d cost_b: %d, cost_a: %d\n", b->nbr, b->index, b->cost_b, b->cost_a);
 		b = b->next;
 	}
 }
@@ -42,9 +42,8 @@ int	main(int ac, char **av)
 	b = NULL;
 	a = fill_stack_a(ac, av);
 	tmp = a;
-	print_stack(a, b);
 	a = tmp;
 	sort_stack(&a, &b, ac);
-	print_stack(a, b);
-	return (0);
+	// print_stack(a, b);
+	return (EXIT_SUCCESS);
 }

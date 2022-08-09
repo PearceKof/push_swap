@@ -12,6 +12,13 @@ void	quit(char *error, t_stack **stack)
 	exit(EXIT_SUCCESS);
 }
 
+int	get_abs(int nb)
+{
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
+}
+
 long int	ft_atol(const char *str)
 {
 	char		neg;

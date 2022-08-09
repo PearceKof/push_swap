@@ -8,6 +8,7 @@ FILES		= main.c \
 				stack_utils.c \
 				utils.c \
 				sort.c \
+				move.c \
 				pu_ro_sw/push.c \
 				pu_ro_sw/swap.c \
 				pu_ro_sw/rotate.c \
