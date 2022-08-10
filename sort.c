@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/10 17:26:50 by blaurent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
@@ -97,8 +109,8 @@ void	sort_stack(t_stack **a, t_stack **b, int ac)
 
 void	sort_three(t_stack **a)
 {
-	int	biggest;
 	t_stack	*ptr;
+	int		biggest;
 
 	if (is_sorted(*a))
 		return ;

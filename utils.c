@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/10 17:28:48 by blaurent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	quit(char *error, t_stack **stack)
@@ -35,8 +47,8 @@ long int	ft_atol(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9' 
-			&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9'
+		&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
 		value = (value * 10) + str[i++] - '0';
 	return (value * neg);
 }

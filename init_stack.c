@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/10 17:13:24 by blaurent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	fill_index(t_stack *a, int size)
@@ -6,7 +18,7 @@ void	fill_index(t_stack *a, int size)
 	t_stack	*biggest;
 	int		nb;
 
-	while(size-- > 0)
+	while (size-- > 0)
 	{
 		ptr = a;
 		nb = INT_MIN;
@@ -28,7 +40,7 @@ void	fill_index(t_stack *a, int size)
 	}
 }
 
-t_stack	*fill_stack_a(int ac, char  **av)
+t_stack	*fill_stack_a(int ac, char **av)
 {
 	t_stack	*a;
 	int		nb;

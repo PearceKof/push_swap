@@ -19,7 +19,7 @@ static int	ft_check_format(va_list param, const char format, int *s, int std)
 	else if (format == 's')
 		ft_fprint_s(param, s, std);
 	else if (format == 'p')
-		ft_fprint_p(param, s, "0123456789abcdef",std);
+		ft_fprint_p(param, s, "0123456789abcdef", std);
 	else if (format == 'd' || format == 'i')
 		ft_fprint_di(param, s, std);
 	else if (format == 'u')

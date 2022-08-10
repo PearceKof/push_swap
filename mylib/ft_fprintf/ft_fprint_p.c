@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_fprint_p(va_list param, int *size, char *base,int std)
+void	ft_fprint_p(va_list param, int *size, char *base, int std)
 {
 	void	*ad;
 
