@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 15:53:11 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:31:38 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include "mylib/includes/libft.h"
 # include "mylib/includes/ft_printf.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -29,7 +26,6 @@ typedef struct s_stack
 	int				cost_b;
 	struct s_stack	*next;
 }	t_stack;
-
 /*
 move.c
 */
@@ -57,9 +53,6 @@ t_stack	*get_last_stack(t_stack *stack);
 void	del_stack(t_stack **stack);
 /*
 actions
-push.c
-swap.c
-rotate.c et +
 */
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);

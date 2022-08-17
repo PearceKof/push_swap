@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 16:00:47 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:23:31 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	quit(int error, t_stack **stack)
 		del_stack(stack);
 	if (error)
 	{
-		ft_fprintf(STDERR_FILENO, "ERROR\n");
+		ft_putstr_fd("ERROR\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	exit(EXIT_SUCCESS);

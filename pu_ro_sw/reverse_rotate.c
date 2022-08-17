@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:19:14 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/10 17:19:44 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:25:01 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ static void	reverse_rotate(t_stack **stack)
 void	rra(t_stack **a)
 {
 	reverse_rotate(a);
-	ft_putstr("rra\n");
+	ft_putstr_fd("rra\n", STDIN_FILENO);
 }
 
 void	rrb(t_stack **b)
 {
 	reverse_rotate(b);
-	ft_putstr("rrb\n");
+	ft_putstr_fd("rrb\n", STDIN_FILENO);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_putstr("rrr\n");
+	ft_putstr_fd("rrr\n", STDIN_FILENO);
 }
