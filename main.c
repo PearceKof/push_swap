@@ -39,7 +39,7 @@ static int	is_nbr_valid(char **nbr)
 		j = 0;
 		while (nbr[i][j])
 		{
-			while (nbr[i][j] == '-' ||nbr[i][j] == '+')
+			while (nbr[i][j] == '-' || nbr[i][j] == '+')
 				j++;
 			if (!ft_isdigit(nbr[i][j++]))
 				return (0);
