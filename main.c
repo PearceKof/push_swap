@@ -31,10 +31,19 @@ static int	is_nbr_valid(char **nbr)
 {
 	long	nb;
 	size_t	i;
+	size_t	j;
 
 	i = 1;
 	while (nbr[i])
 	{
+		j = 0;
+		while (nbr[i][j])
+		{
+			while (nbr[i][j] == '-' ||nbr[i][j] == '+')
+				j++;
+			if (!ft_isdigit(nbr[i][j++]))
+				return (0);
+		}
 		nb = ft_atol(nbr[i]);
 		if ((nb < INT_MIN || nb > INT_MAX) || is_double(nb, &nbr[i++]))
 			return (0);
