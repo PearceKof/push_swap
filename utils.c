@@ -6,19 +6,19 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 11:17:41 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:00:47 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	quit(char *error, t_stack **stack)
+void	quit(int error, t_stack **stack)
 {
 	if (stack)
 		del_stack(stack);
 	if (error)
 	{
-		ft_fprintf(STDERR_FILENO, "ERROR\n%s\n", error);
+		ft_fprintf(STDERR_FILENO, "ERROR\n");
 		exit(EXIT_FAILURE);
 	}
 	exit(EXIT_SUCCESS);

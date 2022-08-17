@@ -11,18 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-typedef struct s_stack
-{
-	int				nbr;
-	int				index;
-	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
-	struct s_stack	*next;
-}	t_stack;
-*/
 
 static int	is_double(long nb, char **nblist)
 {
@@ -48,11 +36,8 @@ static int	is_nbr_valid(char **nbr)
 	while (nbr[i])
 	{
 		nb = ft_atol(nbr[i]);
-		if (nb < INT_MIN || nb > INT_MAX)
-			quit("All numbers must be in the maxmin int limit", NULL);
-		if (is_double(nb, &nbr[i]))
-			quit("All numbers must be unique", NULL);
-		i++;
+		if ((nb < INT_MIN || nb > INT_MAX) || is_double(nb, &nbr[i++]))
+			return (0);
 	}
 	return (1);
 }
@@ -65,7 +50,7 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	if (!is_nbr_valid(av))
-		quit("All arguments needs to be an unique number", NULL);
+		quit(1, NULL);
 	b = NULL;
 	a = fill_stack_a(ac, av);
 	sort_stack(&a, &b, stack_size(a));

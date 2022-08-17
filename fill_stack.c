@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 14:33:10 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:42:32 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	**dup_arg(char **av, int ac)
 		arg = malloc(ac * sizeof(char *));
 		if (!arg)
 			return (NULL);
-		while(av[i])
+		while (av[i])
 		{
 			arg[i] = ft_strdup(av[i]);
 			if (!arg[i])

@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 13:52:09 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:53:11 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_args
-{
-	
-}	t_arg;
 /*
 move.c
 */
@@ -80,5 +76,5 @@ void	rrr(t_stack **a, t_stack **b);
 utils.c
 */
 int		is_sorted(t_stack *stack);
-void	quit(char *error, t_stack **stack);
+void	quit(int error, t_stack **stack);
 #endif
