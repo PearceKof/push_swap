@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 11:27:10 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 11:27:13 by blaurent         ###   ########.fr       */
+/*   Created: 2022/08/15 12:52:57 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/15 12:55:04 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strchr(const char *str, int c)
+long	ft_atol(const char *str)
 {
-	size_t	i;
+	char		neg;
+	int			i;
+	long int	value;
 
+	neg = 1;
 	i = 0;
-	while (str[i] != (unsigned char)c && str[i] != '\0')
+	value = 0;
+	if (str[i] == '-')
+	{
+		neg *= -1;
 		i++;
-	if (str[i] == (unsigned char)c)
-		return ((char *)str + i);
-	else
-		return (NULL);
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9'
+		&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
+		value = (value * 10) + str[i++] - '0';
+	return (value * neg);
 }

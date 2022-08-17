@@ -21,7 +21,7 @@ static size_t	ft_countc(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
 		if (s[i] != '\0')
 			count++;
@@ -49,7 +49,7 @@ static const char	*ft_filltab(char **tab, const char *s, char c)
 		s++;
 	while (s[i] && s[i] != c)
 		i++;
-	*tab = (char *)malloc(sizeof(char) * (i + 1));
+	*tab = malloc(sizeof(char) * (i + 1));
 	if (!tab)
 		return (NULL);
 	j = 0;
@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	nbrofc = ft_countc(s, c);
-	tab = (char **)malloc(sizeof(char *) * (nbrofc + 1));
+	tab = malloc(sizeof(char *) * (nbrofc + 1));
 	if (!tab)
 		return (NULL);
 	i = 0;

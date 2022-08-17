@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/10 17:28:48 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:17:41 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,61 +29,6 @@ int	get_abs(int nb)
 	if (nb < 0)
 		return (nb * -1);
 	return (nb);
-}
-
-long int	ft_atol(const char *str)
-{
-	char		neg;
-	int			i;
-	long int	value;
-
-	neg = 1;
-	i = 0;
-	value = 0;
-	if (str[i] == '-')
-	{
-		neg *= -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9'
-		&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
-		value = (value * 10) + str[i++] - '0';
-	return (value * neg);
-}
-
-int	is_double(long nb, char **nblist)
-{
-	long	nbbis;
-	size_t	i;
-
-	i = 1;
-	while (nblist[i])
-	{
-		nbbis = ft_atol(nblist[i++]);
-		if (nb == nbbis)
-			return (1);
-	}
-	return (0);
-}
-
-int	is_nbr_valid(char **nbr)
-{
-	long	nb;
-	size_t	i;
-
-	i = 1;
-	while (nbr[i])
-	{
-		nb = ft_atol(nbr[i]);
-		if (nb < INT_MIN || nb > INT_MAX)
-			quit("All numbers must be in the maxmin int limit", NULL);
-		if (is_double(nb, &nbr[i]))
-			quit("All numbers must be unique", NULL);
-		i++;
-	}
-	return (1);
 }
 
 int	is_sorted(t_stack *stack)

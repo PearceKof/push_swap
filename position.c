@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:12 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/10 17:12:13 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/15 12:54:25 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static void	get_pos(t_stack *stack)
 	}
 }
 
+static void	new_index_and_pos(t_stack *a, int *ind, int *pos)
+{
+	*ind = a->index;
+	*pos = a->pos;
+}
+
 static int	get_target_position(t_stack **a, int index_b, int targ_pos)
 {
 	t_stack	*ptra;
@@ -34,10 +40,7 @@ static int	get_target_position(t_stack **a, int index_b, int targ_pos)
 	while (ptra)
 	{
 		if (ptra->index > index_b && ptra->index < targ_ind)
-		{
-			targ_ind = ptra->index;
-			targ_pos = ptra->pos;
-		}
+			new_index_and_pos(ptra, &targ_ind, &targ_pos);
 		ptra = ptra->next;
 	}
 	if (targ_ind != INT_MAX)
@@ -46,10 +49,7 @@ static int	get_target_position(t_stack **a, int index_b, int targ_pos)
 	while (ptra)
 	{
 		if (ptra->index < targ_ind)
-		{
-			targ_ind = ptra->index;
-			targ_pos = ptra->pos;
-		}
+			new_index_and_pos(ptra, &targ_ind, &targ_pos);
 		ptra = ptra->next;
 	}
 	return (targ_pos);

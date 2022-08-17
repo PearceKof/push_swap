@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/10 17:28:21 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:52:09 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ typedef struct s_stack
 	int				cost_a;
 	int				cost_b;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
+
+typedef struct s_args
+{
+	
+}	t_arg;
 /*
 move.c
 */
@@ -45,8 +49,6 @@ sort.c
 */
 void	pb_all_but_three(t_stack **a, t_stack **b);
 void	sort_stack(t_stack **a, t_stack **b, int ac);
-void	get_cost(t_stack **a, t_stack **b);
-void	move_cheapest(t_stack **a, t_stack **b);
 int		get_abs(int nb);
 void	sort_three(t_stack **a);
 /*
@@ -78,7 +80,5 @@ void	rrr(t_stack **a, t_stack **b);
 utils.c
 */
 int		is_sorted(t_stack *stack);
-int		is_nbr_valid(char **nbr);
-long intft_atol(const char *str);
 void	quit(char *error, t_stack **stack);
 #endif

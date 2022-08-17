@@ -24,10 +24,42 @@ typedef struct s_stack
 }	t_stack;
 */
 
+static int	is_double(long nb, char **nblist)
+{
+	long	nbbis;
+	size_t	i;
+
+	i = 1;
+	while (nblist[i])
+	{
+		nbbis = ft_atol(nblist[i++]);
+		if (nb == nbbis)
+			return (1);
+	}
+	return (0);
+}
+
+static int	is_nbr_valid(char **nbr)
+{
+	long	nb;
+	size_t	i;
+
+	i = 1;
+	while (nbr[i])
+	{
+		nb = ft_atol(nbr[i]);
+		if (nb < INT_MIN || nb > INT_MAX)
+			quit("All numbers must be in the maxmin int limit", NULL);
+		if (is_double(nb, &nbr[i]))
+			quit("All numbers must be unique", NULL);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
-	t_stack	*tmp;
 	t_stack	*b;
 
 	if (ac < 2)
@@ -36,8 +68,6 @@ int	main(int ac, char **av)
 		quit("All arguments needs to be an unique number", NULL);
 	b = NULL;
 	a = fill_stack_a(ac, av);
-	tmp = a;
-	a = tmp;
-	sort_stack(&a, &b, ac);
+	sort_stack(&a, &b, stack_size(a));
 	return (EXIT_SUCCESS);
 }

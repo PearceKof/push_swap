@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/10 17:26:50 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:47:42 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ static void	move_cheapest(t_stack **a, t_stack **b)
 	move(a, b, cost_a, cost_b);
 }
 
-void	sort_stack(t_stack **a, t_stack **b, int ac)
+void	sort_stack(t_stack **a, t_stack **b, int size)
 {
-	if (ac == 3 && (*a)->index == 2)
+	if (size == 2 && (*a)->index == 2)
 		sa(a);
-	else if (ac == 4)
+	else if (size == 3)
 		sort_three(a);
-	else if (ac > 4)
+	else if (size > 3)
 	{
 		pb_all_but_three(a, b);
 		sort_three(a);
