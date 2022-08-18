@@ -6,7 +6,7 @@
 #    By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 17:12:23 by blaurent          #+#    #+#              #
-#    Updated: 2022/08/17 16:26:11 by blaurent         ###   ########.fr        #
+#    Updated: 2022/08/18 16:56:45 by blaurent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ OBJ			= $(FILES:%.c=%.o)
 all: $(OBJ) $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -o $(NAME) $(OBJ)
+	gcc $(FLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c
-	gcc -c $< -o $@
+	gcc -c $(FLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJ)

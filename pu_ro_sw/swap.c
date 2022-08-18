@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:19:20 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 16:25:56 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:17:11 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	ss(t_stack **a, t_stack **b)
 {
 	swap(a);
 	swap(b);
-	ft_putstr_fd("ss\n", STDIN_FILENO);
+	ft_putstr_fd("ss\n", 1);
 }
 
 void	sa(t_stack **a)
 {
 	swap(a);
-	ft_putstr_fd("sa\n", STDIN_FILENO);
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	sb(t_stack **b)
 {
 	swap(b);
-	ft_putstr_fd("sb\n", STDIN_FILENO);
+	ft_putstr_fd("sb\n", 1);
 }

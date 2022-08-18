@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 16:31:38 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:28:45 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 /*
 init_stack.c
 */
-void	fill_index(t_stack *a, int size);
-t_stack	*fill_stack_a(int ac, char **av);
+t_stack	*fill_stack_a(char **av);
 void	find_target_and_position(t_stack **a, t_stack **b);
 /*
 sort.c
@@ -68,6 +67,7 @@ void	rrr(t_stack **a, t_stack **b);
 /*
 utils.c
 */
+int		is_nbr_valid(char **nbr);
 int		is_sorted(t_stack *stack);
 void	quit(int error, t_stack **stack);
 #endif

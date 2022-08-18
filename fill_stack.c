@@ -6,19 +6,19 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 15:42:32 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:39:45 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_index(t_stack *a, int size)
+static void	fill_index(t_stack *a, int size)
 {
 	t_stack	*ptr;
 	t_stack	*biggest;
 	int		nb;
 
-	while (size-- > 0)
+	while (size > 0)
 	{
 		ptr = a;
 		nb = INT_MIN;
@@ -37,50 +37,18 @@ void	fill_index(t_stack *a, int size)
 		}
 		if (biggest)
 			biggest->index = size;
+		size--;
 	}
 }
 
-static char	**dup_arg(char **av, int ac)
+t_stack	*fill_stack_a(char **arg)
 {
-	char	**arg;
-	int		i;
-
-	if (ft_strchr(av[1], ' '))
-		arg = ft_split(av[1], ' ');
-	else
-	{
-		av++;
-		i = 0;
-		arg = malloc(ac * sizeof(char *));
-		if (!arg)
-			return (NULL);
-		while (av[i])
-		{
-			arg[i] = ft_strdup(av[i]);
-			if (!arg[i])
-			{
-				ft_freetab(arg);
-				return (NULL);
-			}
-			i++;
-		}
-		arg[i] = NULL;
-	}
-	return (arg);
-}
-
-t_stack	*fill_stack_a(int ac, char **av)
-{
-	char	**arg;
 	t_stack	*a;
 	int		nb;
 	int		i;
 
 	nb = 0;
 	a = NULL;
-	arg = dup_arg(av, ac);
-	if (!arg)
-		return (NULL);
 	i = 0;
 	while (arg[i])
 	{
@@ -89,8 +57,14 @@ t_stack	*fill_stack_a(int ac, char **av)
 			a = new_stack(nb);
 		else
 			add_stack(&a, new_stack(nb));
+		if (!a)
+		{
+			ft_freetab(arg);
+			quit(1, &a);
+		}
 		i++;
 	}
+	ft_freetab(arg);
 	fill_index(a, stack_size(a));
 	return (a);
 }

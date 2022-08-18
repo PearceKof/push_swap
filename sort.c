@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/17 14:47:42 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:07:27 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
 {
-	int	a_size;
-	int	b_size;
+	int	size_a;
+	int	size_b;
 	int	i;
 
-	a_size = stack_size(*a);
-	b_size = 0;
+	size_a = stack_size(*a);
+	size_b = 0;
 	i = 0;
-	while (a_size > 6 && i < a_size && b_size < a_size / 2)
+	while (size_a > 6 && i < size_a && size_b < size_a / 2)
 	{
-		if ((*a)->index <= a_size / 2)
+		if ((*a)->index <= size_a / 2)
 		{
 			pb(a, b);
-			b_size++;
+			size_b++;
 		}
 		else
 			ra(a);
@@ -83,6 +83,8 @@ static void	move_cheapest(t_stack **a, t_stack **b)
 
 void	sort_stack(t_stack **a, t_stack **b, int size)
 {
+	if (is_sorted(*a))
+		return ;
 	if (size == 2 && (*a)->index == 2)
 		sa(a);
 	else if (size == 3)

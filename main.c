@@ -12,56 +12,52 @@
 
 #include "push_swap.h"
 
-static int	is_double(long nb, char **nblist)
+static char	**dup_arg(char **av, int ac)
 {
-	long	nbbis;
-	size_t	i;
+	char	**arg;
+	int		i;
 
-	i = 1;
-	while (nblist[i])
+	if (ft_strchr(av[1], ' '))
+		arg = ft_split(av[1], ' ');
+	else
 	{
-		nbbis = ft_atol(nblist[i++]);
-		if (nb == nbbis)
-			return (1);
-	}
-	return (0);
-}
-
-static int	is_nbr_valid(char **nbr)
-{
-	long	nb;
-	size_t	i;
-	size_t	j;
-
-	i = 1;
-	while (nbr[i])
-	{
-		j = 0;
-		while (nbr[i][j])
+		i = 0;
+		arg = malloc(ac * sizeof(char *));
+		if (!arg)
+			return (NULL);
+		while (av[i + 1])
 		{
-			while (nbr[i][j] == '-' || nbr[i][j] == '+')
-				j++;
-			if (!ft_isdigit(nbr[i][j++]))
-				return (0);
+			arg[i] = ft_strdup(av[i + 1]);
+			if (!arg[i])
+			{
+				ft_freetab(arg);
+				return (NULL);
+			}
+			i++;
 		}
-		nb = ft_atol(nbr[i]);
-		if ((nb < INT_MIN || nb > INT_MAX) || is_double(nb, &nbr[i++]))
-			return (0);
+		arg[i] = NULL;
 	}
-	return (1);
+	return (arg);
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**arg;
 
 	if (ac < 2)
 		return (0);
-	if (!is_nbr_valid(av))
+	arg = dup_arg(av, ac);
+	if (!arg)
 		quit(1, NULL);
+	if (!is_nbr_valid(arg))
+	{
+		ft_freetab(arg);
+		quit(1, NULL);
+	}
 	b = NULL;
-	a = fill_stack_a(ac, av);
+	a = fill_stack_a(arg);
 	sort_stack(&a, &b, stack_size(a));
-	return (EXIT_SUCCESS);
+	quit(0, &a);
 }
