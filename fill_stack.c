@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/18 16:39:45 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:43:45 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	fill_index(t_stack *a, int size)
 t_stack	*fill_stack_a(char **arg)
 {
 	t_stack	*a;
-	int		nb;
 	int		i;
+	int		nb;
 
 	nb = 0;
 	a = NULL;

@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 11:40:03 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:07:12 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,28 @@ void	sort_three(t_stack **a)
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
 {
-	int	size_a;
-	int	size_b;
-	int	i;
+	t_stack	*last;
+	int		size_a;
+	int		size_b;
+	int		i;
 
 	size_a = stack_size(*a);
 	size_b = 0;
 	i = 0;
-	while (size_a > 6 && i < size_a && size_b < size_a / 2)
+	if (size_a > 6)
 	{
-		if ((*a)->index <= size_a / 2)
+		while (i < size_a && size_b < size_a / 2)
 		{
-			pb(a, b);
-			size_b++;
+			last = get_last_stack(*a);
+			if ((*a)->index <= size_a / 2)
+			{
+				pb(a, b);
+				size_b++;
+			}
+			else
+				ra(a);
+			i++;
 		}
-		else
-			ra(a);
-		i++;
 	}
 	while (stack_size(*a) > 3)
 		pb(a, b);
@@ -73,12 +78,14 @@ static void	get_cost(t_stack **a, t_stack **b)
 	size_b = stack_size(ptrb);
 	while (ptrb)
 	{
-		ptrb->cost_b = ptrb->pos;
 		if (ptrb->pos > size_b / 2)
 			ptrb->cost_b = (size_b - ptrb->pos) * -1;
-		ptrb->cost_a = ptrb->target_pos;
+		else
+			ptrb->cost_b = ptrb->pos;
 		if (ptrb->target_pos > size_a / 2)
 			ptrb->cost_a = (size_a - ptrb->target_pos) * -1;
+		else
+			ptrb->cost_a = ptrb->target_pos;
 		ptrb = ptrb->next;
 	}
 }

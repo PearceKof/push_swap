@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 11:30:11 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:04:14 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	is_double(long nb, char **nblist)
 {
 	long	nbbis;
-	size_t	i;
+	int		i;
 
 	i = 1;
 	while (nblist[i])
