@@ -6,11 +6,35 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/18 15:07:27 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:40:03 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_three(t_stack **a)
+{
+	t_stack	*ptr;
+	int		biggest;
+
+	if (is_sorted(*a))
+		return ;
+	ptr = *a;
+	biggest = ptr->index;
+	while (ptr)
+	{
+		if (ptr->index > biggest)
+			biggest = ptr->index;
+		ptr = ptr->next;
+	}
+	ptr = *a;
+	if ((*a)->next->index == biggest)
+		rra(a);
+	else if ((*a)->index == biggest)
+		ra(a);
+	if ((*a)->index > (*a)->next->index)
+		sa(a);
+}
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
 {
@@ -107,28 +131,4 @@ void	sort_stack(t_stack **a, t_stack **b, int size)
 				rra(a);
 		}
 	}
-}
-
-void	sort_three(t_stack **a)
-{
-	t_stack	*ptr;
-	int		biggest;
-
-	if (is_sorted(*a))
-		return ;
-	ptr = *a;
-	biggest = ptr->index;
-	while (ptr)
-	{
-		if (ptr->index > biggest)
-			biggest = ptr->index;
-		ptr = ptr->next;
-	}
-	ptr = *a;
-	if ((*a)->next->index == biggest)
-		rra(a);
-	else if ((*a)->index == biggest)
-		ra(a);
-	if ((*a)->index > (*a)->next->index)
-		sa(a);
 }

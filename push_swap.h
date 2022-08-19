@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/18 16:28:45 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:39:05 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ utils.c
 int		is_nbr_valid(char **nbr);
 int		is_sorted(t_stack *stack);
 void	quit(int error, t_stack **stack);
+
 #endif

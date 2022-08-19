@@ -12,6 +12,20 @@
 
 #include "../includes/libft.h"
 
+static int	is_only_c(const char *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static size_t	ft_countc(char const *s, char c)
 {
 	size_t	i;
@@ -68,7 +82,7 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	nbrofc;
 
-	if (!s)
+	if (!s || is_only_c(s, c))
 		return (NULL);
 	i = 0;
 	nbrofc = ft_countc(s, c);
