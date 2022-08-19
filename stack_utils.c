@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:43 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/18 14:40:52 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:11:41 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_stack	*new_stack(int nbr)
 	new->index = 0;
 	new->pos = -1;
 	new->target_pos = -1;
-	new->cost_a = -1;
-	new->cost_b = -1;
+	new->cost_ra = -1;
+	new->cost_rb = -1;
 	new->next = NULL;
 	return (new);
 }

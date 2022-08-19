@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:07:12 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:12:39 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ static void	get_cost(t_stack **a, t_stack **b)
 	while (ptrb)
 	{
 		if (ptrb->pos > size_b / 2)
-			ptrb->cost_b = (size_b - ptrb->pos) * -1;
+			ptrb->cost_rb = (size_b - ptrb->pos) * -1;
 		else
-			ptrb->cost_b = ptrb->pos;
+			ptrb->cost_rb = ptrb->pos;
 		if (ptrb->target_pos > size_a / 2)
-			ptrb->cost_a = (size_a - ptrb->target_pos) * -1;
+			ptrb->cost_ra = (size_a - ptrb->target_pos) * -1;
 		else
-			ptrb->cost_a = ptrb->target_pos;
+			ptrb->cost_ra = ptrb->target_pos;
 		ptrb = ptrb->next;
 	}
 }
@@ -94,22 +94,22 @@ static void	move_cheapest(t_stack **a, t_stack **b)
 {
 	t_stack	*ptrb;
 	int		cheapest;
-	int		cost_a;
-	int		cost_b;
+	int		cost_ra;
+	int		cost_rb;
 
 	cheapest = INT_MAX;
 	ptrb = *b;
 	while (ptrb)
 	{
-		if (get_abs(ptrb->cost_b) + get_abs(ptrb->cost_a) < cheapest)
+		if (get_abs(ptrb->cost_rb) + get_abs(ptrb->cost_ra) < cheapest)
 		{
-			cheapest = get_abs(ptrb->cost_b) + get_abs(ptrb->cost_a);
-			cost_a = ptrb->cost_a;
-			cost_b = ptrb->cost_b;
+			cheapest = get_abs(ptrb->cost_rb) + get_abs(ptrb->cost_ra);
+			cost_ra = ptrb->cost_ra;
+			cost_rb = ptrb->cost_rb;
 		}
 		ptrb = ptrb->next;
 	}
-	move(a, b, cost_a, cost_b);
+	move(a, b, cost_ra, cost_rb);
 }
 
 void	sort_stack(t_stack **a, t_stack **b, int size)

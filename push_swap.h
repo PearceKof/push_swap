@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 11:39:05 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:10:55 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_stack
 	int				index;
 	int				pos;
 	int				target_pos;
-	int				cost_a;
-	int				cost_b;
+	int				cost_ra;
+	int				cost_rb;
 	struct s_stack	*next;
 }	t_stack;
 /*
