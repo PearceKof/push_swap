@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:12:39 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/22 12:15:17 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	sort_three(t_stack **a)
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
 {
-	t_stack	*last;
 	int		size_a;
 	int		size_b;
 	int		i;
@@ -50,7 +49,6 @@ void	pb_all_but_three(t_stack **a, t_stack **b)
 	{
 		while (i < size_a && size_b < size_a / 2)
 		{
-			last = get_last_stack(*a);
 			if ((*a)->index <= size_a / 2)
 			{
 				pb(a, b);
