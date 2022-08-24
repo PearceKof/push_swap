@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 15:23:11 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:16:47 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	is_double(long nb, char **nblist)
 {
@@ -39,6 +39,8 @@ int	is_nbr_valid(char **nbr)
 		j = 0;
 		if (nbr[i][0] == '-' || nbr[i][0] == '+')
 			j++;
+		else if (!nbr[i][0])
+			return (0);
 		while (nbr[i][j])
 		{
 			if (!ft_isdigit(nbr[i][j]))

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 13:13:09 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 17:36:59 by blaurent         ###   ########.fr       */
+/*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/24 18:11:50 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+# include "../push_swap.h"
 
 void	result(t_stack *a, t_stack *b, char **arg, char **moves, int error)
 {

@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 17:41:49 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:16:43 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	sort_three(t_stack **a)
 {

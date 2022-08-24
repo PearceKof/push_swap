@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 17:37:43 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:07:38 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../mylib/includes/libft.h"
-# include "../mylib/includes/ft_printf.h"
 
 typedef struct s_stack
 {

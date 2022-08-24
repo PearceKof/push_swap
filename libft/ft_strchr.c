@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetab.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 14:34:20 by blaurent          #+#    #+#             */
-/*   Updated: 2022/07/14 16:11:16 by blaurent         ###   ########.fr       */
+/*   Created: 2022/08/17 11:27:10 by blaurent          #+#    #+#             */
+/*   Updated: 2022/08/24 18:14:19 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_freetab(char **tab)
+char	*ft_strchr(const char *str, int c)
 {
 	size_t	i;
 
 	i = 0;
-	if (tab)
-	{
-		while (tab[i])
-			free(tab[i++]);
-		free(tab);
-	}
+	while (str[i] != (unsigned char)c && str[i] != '\0')
+		i++;
+	if (str[i] == (unsigned char)c)
+		return ((char *)str + i);
+	else
+		return (NULL);
 }

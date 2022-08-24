@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 15:22:54 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:16:32 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	fill_index(t_stack *a, int size)
 {

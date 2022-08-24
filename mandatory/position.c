@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:12 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:06:52 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:16:41 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	get_pos(t_stack *stack)
 {
