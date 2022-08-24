@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:11:50 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:26:03 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+# include "../includes/push_swap.h"
 
 void	result(t_stack *a, t_stack *b, char **arg, char **moves, int error)
 {
@@ -28,6 +28,8 @@ void	result(t_stack *a, t_stack *b, char **arg, char **moves, int error)
 		ft_freetab(arg);
 	if (moves)
 		ft_freetab(moves);
+	if (error)
+		exit(255);
 	exit(EXIT_SUCCESS);
 }
 

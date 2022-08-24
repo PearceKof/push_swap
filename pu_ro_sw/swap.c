@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:19:20 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 17:40:45 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:19:32 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	swap(t_stack **stack)
 {
