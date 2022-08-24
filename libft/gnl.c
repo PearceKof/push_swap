@@ -47,7 +47,7 @@ static char	*ft_readfile(char *file, int fd)
 	int		end;
 
 	end = 1;
-	tmp = ft_calloc(BUFFER_SIZE, sizeof(char));
+	tmp = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	while (!ft_strchr(tmp, '\n') && end != 0)
 	{
 		end = read(fd, tmp, BUFFER_SIZE);
@@ -120,17 +120,16 @@ static char	*ft_nxtline(char *file)
 	return (nxtline);
 }
 
-char	*gnl(int fd)
+char	*gnl(char **file, int fd)
 {
-	static char	*file;
 	char		*line;
 
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
-	file = ft_readfile(file, fd);
-	if (!file)
+	*file = ft_readfile(*file, fd);
+	if (!(*file))
 		return (NULL);
-	line = ft_cpyline(file);
-	file = ft_nxtline(file);
+	line = ft_cpyline(*file);
+	*file = ft_nxtline(*file);
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 19:46:53 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 20:29:14 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,21 @@ static int	do_move(t_stack **a, t_stack **b, char *moves)
 
 static int	get_moves(t_stack **a, t_stack **b)
 {
+	char	*file;
 	char	*in;
 
-	in = gnl(STDIN_FILENO);
+	file = NULL;
+	in = gnl(&file, STDIN_FILENO);
 	while (in)
 	{
 		if (do_move(a, b, in))
+		{
+			free(file);
+			free(in);
 			return (1);
+		}
 		free(in);
-		in = gnl(STDIN_FILENO);
+		in = gnl(&file, STDIN_FILENO);
 	}
 	if (in)
 		free(in);
