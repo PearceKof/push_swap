@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:26:03 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:32:38 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	**get_moves()
 
 	in = gnl(STDIN_FILENO);
 	moves = ft_split(in, '\n');
+	free(in);
 	return (moves);
 }
 
