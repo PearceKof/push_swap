@@ -47,12 +47,10 @@ static char	*ft_readfile(char *file, int fd)
 	int		end;
 
 	end = 1;
-	tmp = malloc(30 * sizeof(char));
-	if (!tmp)
-		return (NULL);
-	while (end != 0)
+	tmp = ft_calloc(BUFFER_SIZE, sizeof(char));
+	while (!ft_strchr(tmp, '\n') && end != 0)
 	{
-		end = read(fd, tmp, 30);
+		end = read(fd, tmp, BUFFER_SIZE);
 		if (end == -1)
 		{
 			free(tmp);
@@ -70,14 +68,69 @@ static char	*ft_readfile(char *file, int fd)
 	return (file);
 }
 
+static char	*ft_cpyline(char *file)
+{
+	char	*line;
+	size_t	i;
+
+	if (file[0] == '\0')
+		return (NULL);
+	i = 0;
+	while (file[i] && file[i] != '\n')
+		i++;
+	if (file[i] == '\n')
+		i++;
+	line = malloc((i + 1) * sizeof(char));
+	if (!line)
+		return (NULL);
+	line[i] = '\0';
+	i = 0;
+	while (file[i] && file[i] != '\n')
+	{
+		line[i] = file[i];
+		i++;
+	}
+	line[i] = file[i];
+	return (line);
+}
+
+static char	*ft_nxtline(char *file)
+{
+	char	*nxtline;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (file[i] && file[i] != '\n')
+		i++;
+	if (!file[i])
+	{
+		free(file);
+		return (NULL);
+	}
+	i++;
+	nxtline = malloc((ft_strlen(file + i) + 1) * sizeof(char));
+	if (!nxtline)
+		return (NULL);
+	j = 0;
+	while (file[i])
+		nxtline[j++] = file[i++];
+	nxtline[j] = '\0';
+	free(file);
+	return (nxtline);
+}
+
 char	*gnl(int fd)
 {
 	static char	*file;
+	char		*line;
 
-	if (fd < 0 || fd >= OPEN_MAX)
+	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
 	file = ft_readfile(file, fd);
 	if (!file)
 		return (NULL);
-	return (file);
+	line = ft_cpyline(file);
+	file = ft_nxtline(file);
+	return (line);
 }

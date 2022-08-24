@@ -6,13 +6,13 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:32:38 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 19:46:53 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/push_swap.h"
 
-void	result(t_stack *a, t_stack *b, char **arg, char **moves, int error)
+static void	result(t_stack *a, t_stack *b, char **arg, int error)
 {
 	if (error)
 		ft_putstr_fd("Error\n", STDERR_FILENO);
@@ -26,64 +26,54 @@ void	result(t_stack *a, t_stack *b, char **arg, char **moves, int error)
 		del_stack(&b);
 	if (arg)
 		ft_freetab(arg);
-	if (moves)
-		ft_freetab(moves);
 	if (error)
 		exit(255);
 	exit(EXIT_SUCCESS);
 }
 
-char	**get_moves()
+static int	do_move(t_stack **a, t_stack **b, char *moves)
 {
-	char	**moves;
-	char	*in;
-
-	in = gnl(STDIN_FILENO);
-	moves = ft_split(in, '\n');
-	free(in);
-	return (moves);
-}
-
-int	do_move(t_stack **a, t_stack **b, char *moves)
-{
-	if (!ft_strncmp(moves, "pa", ft_strlen(moves)))
+	if (!ft_strncmp(moves, "pa\n", ft_strlen(moves)))
 		pa(a, b, 0);
-	else if (!ft_strncmp(moves, "pb", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "pb\n", ft_strlen(moves)))
 		pb(a, b, 0);
-	else if (!ft_strncmp(moves, "ss", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "ss\n", ft_strlen(moves)))
 		ss(a, b, 0);
-	else if (!ft_strncmp(moves, "sa", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "sa\n", ft_strlen(moves)))
 		sa(a, 0);
-	else if (!ft_strncmp(moves, "sb", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "sb\n", ft_strlen(moves)))
 		sb(b, 0);
-	else if (!ft_strncmp(moves, "ra", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "ra\n", ft_strlen(moves)))
 		ra(a, 0);
-	else if (!ft_strncmp(moves, "rb", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "rb\n", ft_strlen(moves)))
 		rb(b, 0);
-	else if (!ft_strncmp(moves, "rr", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "rr\n", ft_strlen(moves)))
 		rr(a, b, 0);
-	else if (!ft_strncmp(moves, "rra", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "rra\n", ft_strlen(moves)))
 		rra(a, 0);
-	else if (!ft_strncmp(moves, "rrb", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "rrb\n", ft_strlen(moves)))
 		rrb(b, 0);
-	else if (!ft_strncmp(moves, "rrr", ft_strlen(moves)))
+	else if (!ft_strncmp(moves, "rrr\n", ft_strlen(moves)))
 		rrr(a, b, 0);
 	else
 		return (1);
 	return (0);
 }
 
-int	find_move(t_stack **a, t_stack **b, char **moves)
+static int	get_moves(t_stack **a, t_stack **b)
 {
-	int	i;
+	char	*in;
 
-	i = 0;
-	while (moves[i])
+	in = gnl(STDIN_FILENO);
+	while (in)
 	{
-		if (do_move(a, b, moves[i]))
+		if (do_move(a, b, in))
 			return (1);
-		i++;
+		free(in);
+		in = gnl(STDIN_FILENO);
 	}
+	if (in)
+		free(in);
 	return (0);
 }
 
@@ -92,21 +82,19 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	char	**arg;
-	char	**moves;
 
 	if (ac < 2)
 		return (0);
 	arg = dup_arg(ac, av);
 	if (!arg)
-		result(NULL, NULL, NULL, NULL, 1);
+		result(NULL, NULL, NULL, 1);
 	if (!is_nbr_valid(arg))
-		result(NULL, NULL, arg, NULL, 1);
-	moves = get_moves();
-	if (!moves)
-		result(NULL, NULL, arg, NULL, 1);
+		result(NULL, NULL, arg, 1);
 	b = NULL;
 	a = fill_stack_a(arg);
 	if (!a)
-		result(NULL, NULL, arg, moves, 1);
-	result(a, b, NULL, moves, find_move(&a, &b, moves));
+		result(NULL, NULL, arg, 1);
+	if(get_moves(&a, &b))
+		result(a, b, NULL, 1);
+	result(a, b, NULL, 0);
 }

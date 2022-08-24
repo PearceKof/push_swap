@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:27:10 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:14:19 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 19:08:25 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strchr(const char *str, int c)
 {
 	size_t	i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (str[i] != (unsigned char)c && str[i] != '\0')
 		i++;
