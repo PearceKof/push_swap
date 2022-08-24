@@ -6,15 +6,15 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:32 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:10:55 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:37:43 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "mylib/includes/libft.h"
-# include "mylib/includes/ft_printf.h"
+# include "../mylib/includes/libft.h"
+# include "../mylib/includes/ft_printf.h"
 
 typedef struct s_stack
 {
@@ -46,29 +46,28 @@ void	sort_three(t_stack **a);
 stack_utils.c
 */
 int		stack_size(t_stack *stack);
-t_stack	*new_stack(int nbr);
-void	add_stack(t_stack **stack, t_stack *new);
 t_stack	*get_last_stack(t_stack *stack);
 void	del_stack(t_stack **stack);
 /*
 actions
 */
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
-void	ss(t_stack **a, t_stack **b);
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b, int printmv);
+void	pb(t_stack **a, t_stack **b, int printmv);
+void	ss(t_stack **a, t_stack **b, int printmv);
+void	sa(t_stack **a, int printmv);
+void	sb(t_stack **b, int printmv);
+void	ra(t_stack **a, int printmv);
+void	rb(t_stack **b, int printmv);
+void	rr(t_stack **a, t_stack **b, int printmv);
+void	rra(t_stack **a, int printmv);
+void	rrb(t_stack **b, int printmv);
+void	rrr(t_stack **a, t_stack **b, int printmv);
 /*
 utils.c
 */
 int		is_nbr_valid(char **nbr);
 int		is_sorted(t_stack *stack);
 void	quit(int error, t_stack **stack);
+char	**dup_arg(int ac, char **av);
 
 #endif

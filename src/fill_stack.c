@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:16 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 12:43:45 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:22:54 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ static void	fill_index(t_stack *a, int size)
 			biggest->index = size;
 		size--;
 	}
+}
+
+static t_stack	*new_stack(int nbr)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->nbr = nbr;
+	new->index = 0;
+	new->pos = -1;
+	new->target_pos = -1;
+	new->cost_ra = -1;
+	new->cost_rb = -1;
+	new->next = NULL;
+	return (new);
+}
+
+static void	add_stack(t_stack **stack, t_stack *new)
+{
+	t_stack	*last;
+
+	if (!new)
+		return ;
+	last = get_last_stack(*stack);
+	last->next = new;
 }
 
 t_stack	*fill_stack_a(char **arg)

@@ -13,6 +13,10 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -25,6 +29,8 @@ typedef struct s_list
 
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 void	ft_freetab(char **tab);
 int		ft_isdigit(int c);
 char	*ft_itoa(int n);
@@ -38,5 +44,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*gnl(int fd);
 
 #endif

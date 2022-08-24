@@ -6,37 +6,21 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:43 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:11:41 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:22:17 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_stack(int nbr)
+int	is_sorted(t_stack *stack)
 {
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	new->nbr = nbr;
-	new->index = 0;
-	new->pos = -1;
-	new->target_pos = -1;
-	new->cost_ra = -1;
-	new->cost_rb = -1;
-	new->next = NULL;
-	return (new);
-}
-
-void	add_stack(t_stack **stack, t_stack *new)
-{
-	t_stack	*last;
-
-	if (!new)
-		return ;
-	last = get_last_stack(*stack);
-	last->next = new;
+	while (stack->next)
+	{
+		if (stack->nbr > stack->next->nbr)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
 int	stack_size(t_stack *stack)

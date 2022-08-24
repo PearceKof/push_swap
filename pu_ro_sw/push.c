@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:19:11 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/18 16:16:56 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:38:15 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../src/push_swap.h"
 
 static void	push(t_stack **src, t_stack **dest)
 {
@@ -24,14 +24,16 @@ static void	push(t_stack **src, t_stack **dest)
 	*src = tmp;
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, int printmv)
 {
 	push(b, a);
-	ft_putstr_fd("pa\n", 1);
+	if (printmv)
+		ft_putstr_fd("pa\n", 1);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, int printmv)
 {
 	push(a, b);
-	ft_putstr_fd("pb\n", 1);
+	if (printmv)
+		ft_putstr_fd("pb\n", 1);
 }

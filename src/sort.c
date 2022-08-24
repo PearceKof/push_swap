@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/22 12:15:17 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:41:49 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	sort_three(t_stack **a)
 	}
 	ptr = *a;
 	if ((*a)->next->index == biggest)
-		rra(a);
+		rra(a, 1);
 	else if ((*a)->index == biggest)
-		ra(a);
+		ra(a, 1);
 	if ((*a)->index > (*a)->next->index)
-		sa(a);
+		sa(a, 1);
 }
 
 void	pb_all_but_three(t_stack **a, t_stack **b)
@@ -51,16 +51,16 @@ void	pb_all_but_three(t_stack **a, t_stack **b)
 		{
 			if ((*a)->index <= size_a / 2)
 			{
-				pb(a, b);
+				pb(a, b, 1);
 				size_b++;
 			}
 			else
-				ra(a);
+				ra(a, 1);
 			i++;
 		}
 	}
 	while (stack_size(*a) > 3)
-		pb(a, b);
+		pb(a, b, 1);
 }
 
 static void	get_cost(t_stack **a, t_stack **b)
@@ -115,7 +115,7 @@ void	sort_stack(t_stack **a, t_stack **b, int size)
 	if (is_sorted(*a))
 		return ;
 	if (size == 2 && (*a)->index == 2)
-		sa(a);
+		sa(a, 1);
 	else if (size == 3)
 		sort_three(a);
 	else if (size > 3)
@@ -131,9 +131,9 @@ void	sort_stack(t_stack **a, t_stack **b, int size)
 		while (!is_sorted(*a))
 		{
 			if ((*a)->index >= stack_size(*a) / 2)
-				ra(a);
+				ra(a, 1);
 			else
-				rra(a);
+				rra(a, 1);
 		}
 	}
 }

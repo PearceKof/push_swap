@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/19 13:04:14 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:23:11 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,30 @@ int	get_abs(int nb)
 	return (nb);
 }
 
-int	is_sorted(t_stack *stack)
+char	**dup_arg(int ac, char **av)
 {
-	while (stack->next)
+	char	**arg;
+	int		i;
+
+	if (ft_strchr(av[1], ' '))
+		arg = ft_split(av[1], ' ');
+	else
 	{
-		if (stack->nbr > stack->next->nbr)
-			return (0);
-		stack = stack->next;
+		i = 0;
+		arg = malloc(ac * sizeof(char *));
+		if (!arg)
+			return (NULL);
+		while (av[i + 1])
+		{
+			arg[i] = ft_strdup(av[i + 1]);
+			if (!arg[i])
+			{
+				ft_freetab(arg);
+				return (NULL);
+			}
+			i++;
+		}
+		arg[i] = NULL;
 	}
-	return (1);
+	return (arg);
 }

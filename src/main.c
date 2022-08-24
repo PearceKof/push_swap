@@ -12,34 +12,6 @@
 
 #include "push_swap.h"
 
-static char	**dup_arg(char **av, int ac)
-{
-	char	**arg;
-	int		i;
-
-	if (ft_strchr(av[1], ' '))
-		arg = ft_split(av[1], ' ');
-	else
-	{
-		i = 0;
-		arg = malloc(ac * sizeof(char *));
-		if (!arg)
-			return (NULL);
-		while (av[i + 1])
-		{
-			arg[i] = ft_strdup(av[i + 1]);
-			if (!arg[i])
-			{
-				ft_freetab(arg);
-				return (NULL);
-			}
-			i++;
-		}
-		arg[i] = NULL;
-	}
-	return (arg);
-}
-
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -48,7 +20,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	arg = dup_arg(av, ac);
+	arg = dup_arg(ac, av);
 	if (!arg)
 		quit(1, NULL);
 	if (!is_nbr_valid(arg))
