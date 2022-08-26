@@ -6,11 +6,51 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:16:47 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:37:20 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+char	**dup_arg(int ac, char **av)
+{
+	char	**arg;
+	int		i;
+
+	if (ft_strchr(av[1], ' '))
+		arg = ft_split(av[1], ' ');
+	else
+	{
+		i = 0;
+		arg = malloc(ac * sizeof(char *));
+		if (!arg)
+			return (NULL);
+		while (av[i + 1])
+		{
+			arg[i] = ft_strdup(av[i + 1]);
+			if (!arg[i])
+			{
+				ft_freetab(arg);
+				return (NULL);
+			}
+			i++;
+		}
+		arg[i] = NULL;
+	}
+	return (arg);
+}
+
+void	quit(int error, t_stack **stack)
+{
+	if (stack)
+		del_stack(stack);
+	if (error)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
+}
 
 static int	is_double(long nb, char **nblist)
 {
@@ -55,49 +95,9 @@ int	is_nbr_valid(char **nbr)
 	return (1);
 }
 
-void	quit(int error, t_stack **stack)
-{
-	if (stack)
-		del_stack(stack);
-	if (error)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	exit(EXIT_SUCCESS);
-}
-
 int	get_abs(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);
 	return (nb);
-}
-
-char	**dup_arg(int ac, char **av)
-{
-	char	**arg;
-	int		i;
-
-	if (ft_strchr(av[1], ' '))
-		arg = ft_split(av[1], ' ');
-	else
-	{
-		i = 0;
-		arg = malloc(ac * sizeof(char *));
-		if (!arg)
-			return (NULL);
-		while (av[i + 1])
-		{
-			arg[i] = ft_strdup(av[i + 1]);
-			if (!arg[i])
-			{
-				ft_freetab(arg);
-				return (NULL);
-			}
-			i++;
-		}
-		arg[i] = NULL;
-	}
-	return (arg);
 }

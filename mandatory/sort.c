@@ -6,13 +6,13 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:16:43 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:48:46 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_three(t_stack **a)
+static void	sort_three(t_stack **a)
 {
 	t_stack	*ptr;
 	int		biggest;
