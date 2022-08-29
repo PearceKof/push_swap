@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:48 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/25 16:37:20 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 13:03:38 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	is_nbr_valid(char **nbr)
 	while (nbr[i])
 	{
 		j = 0;
-		if (nbr[i][0] == '-' || nbr[i][0] == '+')
+		if ((nbr[i][0] == '-' || nbr[i][0] == '+') && nbr[i][1])
 			j++;
 		else if (!nbr[i][0])
 			return (0);

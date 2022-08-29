@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/29 12:56:59 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 13:22:41 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	result(t_stack *a, t_stack *b, char **arg, int error)
 {
 	if (error)
 		ft_putstr_fd("Error\n", STDERR_FILENO);
-	else if (is_sorted(a) && !b)
+	else if (a && is_sorted(a) && !b)
 		ft_putstr_fd("OK\n", STDOUT_FILENO);
 	else
 		ft_putstr_fd("KO\n", STDOUT_FILENO);
