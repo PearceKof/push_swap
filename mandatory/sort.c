@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/25 16:48:46 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 14:11:53 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	sort_three(t_stack **a)
 			biggest = ptr->index;
 		ptr = ptr->next;
 	}
-	ptr = *a;
 	if ((*a)->next->index == biggest)
 		rra(a, 1);
 	else if ((*a)->index == biggest)
@@ -65,14 +64,12 @@ void	pb_all_but_three(t_stack **a, t_stack **b)
 
 static void	get_cost(t_stack **a, t_stack **b)
 {
-	t_stack	*ptra;
 	t_stack	*ptrb;
 	int		size_a;
 	int		size_b;
 
-	ptra = *a;
 	ptrb = *b;
-	size_a = stack_size(ptra);
+	size_a = stack_size(*a);
 	size_b = stack_size(ptrb);
 	while (ptrb)
 	{
