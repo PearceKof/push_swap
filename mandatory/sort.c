@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:12:40 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/29 14:11:53 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 14:40:09 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,18 @@ void	pb_all_but_three(t_stack **a, t_stack **b)
 {
 	int		size_a;
 	int		size_b;
-	int		i;
 
 	size_a = stack_size(*a);
 	size_b = 0;
-	i = 0;
-	if (size_a > 6)
+	while (size_a > 6 && size_b < size_a / 2)
 	{
-		while (i < size_a && size_b < size_a / 2)
+		if ((*a)->index <= size_a / 2)
 		{
-			if ((*a)->index <= size_a / 2)
-			{
-				pb(a, b, 1);
-				size_b++;
-			}
-			else
-				ra(a, 1);
-			i++;
+			pb(a, b, 1);
+			size_b++;
 		}
+		else
+			ra(a, 1);
 	}
 	while (stack_size(*a) > 3)
 		pb(a, b, 1);
