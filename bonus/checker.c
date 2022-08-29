@@ -6,11 +6,11 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:48:13 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/25 14:08:11 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:56:59 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	result(t_stack *a, t_stack *b, char **arg, int error)
 {
@@ -18,7 +18,7 @@ static void	result(t_stack *a, t_stack *b, char **arg, int error)
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 	else if (is_sorted(a) && !b)
 		ft_putstr_fd("OK\n", STDOUT_FILENO);
-	else 
+	else
 		ft_putstr_fd("KO\n", STDOUT_FILENO);
 	if (a)
 		del_stack(&a);
@@ -100,7 +100,7 @@ int	main(int ac, char **av)
 	a = fill_stack_a(arg);
 	if (!a)
 		result(NULL, NULL, arg, 1);
-	if(get_moves(&a, &b))
+	if (get_moves(&a, &b))
 		result(a, b, NULL, 1);
 	result(a, b, NULL, 0);
 }
