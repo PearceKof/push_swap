@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 12:52:57 by blaurent          #+#    #+#             */
-/*   Updated: 2022/08/24 18:13:56 by blaurent         ###   ########.fr       */
+/*   Updated: 2022/08/29 13:41:58 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ long	ft_atol(const char *str)
 	else if (str[i] == '+')
 		i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9'
-		&& ((value * neg) > INT_MIN || (value * neg) < INT_MAX))
+		&& ((value * neg) > INT_MIN && (value * neg) < INT_MAX))
 		value = (value * 10) + str[i++] - '0';
 	return (value * neg);
 }
