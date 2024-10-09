@@ -40,7 +40,7 @@ To build and run Push_swap, you need a C compiler and `make`. This program is co
 
 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/push_swap.git
+git clone https://github.com/PearceKof/push_swap.git
 ```
 2. Go to the cloned repository
 ```
