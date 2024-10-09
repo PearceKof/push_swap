@@ -69,11 +69,11 @@ This will output the smallest list of operations needed to sort the numbers.
 There is a checker that check if the final result is indeed sorted or not. You can use it like this:
 - Linux:
 ```
-ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_Linux $ARG
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_linux $ARG
 ```
 - macOS:
 ```
-ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_macOS $ARG
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_Mac $ARG
 ```
 
 ## Operations
