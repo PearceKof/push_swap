@@ -78,7 +78,7 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_Mac $ARG
 
 ## Operations
 
-Push_swap supports the following operations:
+Push_swap will display the operation it does. It sort using the following operations:
 
 - `sa`: Swap the first two elements of stack `a`.
 - `sb`: Swap the first two elements of stack `b`.
